@@ -16,19 +16,19 @@ const Router = () => {
 					element: <Home />,
 				},
 				{
-					path: "home",
+					path: "Home",
 					element: <Home />,
 				},
 				{
-					path: "shop",
+					path: "Shop",
 					element: <Shop />,
                 },
                 {
-                    path: "cart",
+                    path: "Cart",
                     element: <Cart />
                 },
                 {
-                    path: "about",
+                    path: "About",
                     element: <About />
                 }
 			],
