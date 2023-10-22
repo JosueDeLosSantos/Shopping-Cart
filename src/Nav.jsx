@@ -14,18 +14,20 @@ const Nav = () => {
 		}
 	}
 
-	const params = ["Home", "Cart", "Shop", "About"]
+	const params = ["Home", "Shop", "Cart", "About"]
 
 	return (
 		<>
-			<header className="text-white bg-black">
-				<nav className="flex justify-between px-4 py-2">
-					<div className="px-3 py-2">All Shop</div>
-					<ul className="flex justify-between w-2/5">
+			<header className="mainHeader">
+				<nav className="mainNav">
+					<div className="logo">All Shop</div>
+					<ul>
 						{params.map((param) => {
 							return (
-								<li key={param} className="px-3 py-2 hover:underline">
-									<Link to={`${param}`}>{param}</Link>
+								<li onClick={onClick} key={param}>
+									<Link to={`${param}`}>
+										{param}
+									</Link>
 								</li>
 							)
 						})}

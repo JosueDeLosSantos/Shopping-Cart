@@ -1,0 +1,14 @@
+
+.addToCartBtn {
+    font-size: clamp(0.3rem, calc(0.3rem + 0.5vw), 1rem) !important;
+    min-width: 110px !important;
+    margin-top: 1rem !important;
+}
+
+.addToCartIcon {
+    font-size: clamp(0.5rem, calc(0.5rem + 1vw), 1rem) !important;
+}
+
+.itemCard {
+    width: clamp(200px, 20vw, 400px) !important;
+}
