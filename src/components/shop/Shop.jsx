@@ -51,7 +51,8 @@ const Shop = (props) => {
 						value={value}
 						onChange={handleChange}
 						variant="scrollable"
-						scrollButtons="auto"
+                        scrollButtons="auto"
+                        allowScrollButtonsMobile
 						aria-label="basic tabs example"
 					>
 						<Tab label="All" {...a11yProps(0)} />
