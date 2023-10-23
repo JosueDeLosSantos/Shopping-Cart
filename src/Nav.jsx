@@ -80,7 +80,7 @@ const Nav = () => {
 
 	return (
 		<>
-			<header className="mainHeader">
+			<header className="mainHeader sticky top-0">
 				<nav className="mainNav">
 					<div className="logo">All Shop</div>
 					{isBigScreen && (

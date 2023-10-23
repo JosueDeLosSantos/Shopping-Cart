@@ -14,6 +14,7 @@
 .mainHeader {
 	background-color: black;
 	color: white;
+	z-index: 1;
 }
 
 .mainNav {
@@ -44,4 +45,9 @@ a, li {
 
 .underline {
     text-decoration: underline;
+}
+
+.stickIt {
+	position: sticky !important;
+	top: 20 !important;
 }

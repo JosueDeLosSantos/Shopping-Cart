@@ -45,14 +45,23 @@ const Shop = (props) => {
 
 	return (
 		<main className="bg-slate-100">
-			<Box sx={{ width: "100%" }}>
-				<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+			<Box sx={{ width: "100%", position: "relative" }}>
+				<Box
+					sx={{
+						borderBottom: 1,
+						borderColor: "divider",
+						position: "sticky",
+						top: 70,
+                        backgroundColor: "rgb(241 245 249)",
+                        zIndex: 1,
+					}}
+				>
 					<Tabs
 						value={value}
 						onChange={handleChange}
 						variant="scrollable"
-                        scrollButtons="auto"
-                        allowScrollButtonsMobile
+						scrollButtons="auto"
+						allowScrollButtonsMobile
 						aria-label="basic tabs example"
 					>
 						<Tab label="All" {...a11yProps(0)} />
