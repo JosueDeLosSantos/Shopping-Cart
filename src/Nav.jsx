@@ -56,20 +56,22 @@ const Nav = () => {
 			<List>
 				{params.map((text) => (
 					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								{text === "Home" ? (
-									<HomeIcon />
-								) : text === "Shop" ? (
-									<ShoppingBagIcon />
-								) : text === "Cart" ? (
-									<ShoppingCartIcon />
-								) : (
-									<InfoIcon />
-								)}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItemButton>
+						<Link to={`${text}`}>
+							<ListItemButton>
+								<ListItemIcon>
+									{text === "Home" ? (
+										<HomeIcon />
+									) : text === "Shop" ? (
+										<ShoppingBagIcon />
+									) : text === "Cart" ? (
+										<ShoppingCartIcon />
+									) : (
+										<InfoIcon />
+									)}
+								</ListItemIcon>
+								<ListItemText primary={text} />
+							</ListItemButton>
+						</Link>
 					</ListItem>
 				))}
 			</List>
