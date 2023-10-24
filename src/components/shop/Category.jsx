@@ -38,14 +38,17 @@ export default function Category({ category, loading, error, categoryName }) {
 									/>
 									<span className="text-xs ml-1 text-slate-400">{`(${el.rating.count})`}</span>
 								</div>
-								<Button
-									className="addToCartBtn"
-									color="success"
-									variant="contained"
-									startIcon={<ShoppingCartIcon className="addToCartIcon" />}
-								>
-									ADD TO CART
-								</Button>
+								<div id={`${el.id}`} data-quantity="0">
+                                    <Button
+                                        onClick={(e) => {console.log(e.target.parentNode)}}
+										className="addToCartBtn"
+										color="success"
+										variant="contained"
+										startIcon={<ShoppingCartIcon className="addToCartIcon" />}
+									>
+										ADD TO CART
+									</Button>
+								</div>
 							</Paper>
 						)
 					})}
@@ -56,8 +59,8 @@ export default function Category({ category, loading, error, categoryName }) {
 }
 
 Category.propTypes = {
-    category: PropTypes.object,
-    categoryName: PropTypes.string,
+	category: PropTypes.object,
+	categoryName: PropTypes.string,
 	loading: PropTypes.bool,
 	error: PropTypes.bool,
 }

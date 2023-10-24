@@ -21,7 +21,7 @@ import InfoIcon from "@mui/icons-material/Info"
 const Nav = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const isSmallScreen = useMediaQuery({ query: "(max-width: 600px)" })
-	const isBigScreen = useMediaQuery({ query: "(min-width: 600px)" })
+	const isBigScreen = useMediaQuery({ query: "(min-width: 601px)" })
 
 	function onClick(e) {
 		const children = e.target.parentNode.parentNode.children
@@ -88,7 +88,21 @@ const Nav = () => {
 							{params.map((param) => {
 								return (
 									<li onClick={onClick} key={param}>
-										<Link to={`${param}`}>{param}</Link>
+										<Button sx={{ color: "white", mr: 1}}
+											startIcon={
+												param === "Home" ? (
+													<HomeIcon sx={{ mb: 0.5 }} />
+												) : param === "Shop" ? (
+													<ShoppingBagIcon sx={{ mb: 0.5 }} />
+												) : param === "Cart" ? (
+													<ShoppingCartIcon sx={{ mb: 0.5 }} />
+												) : (
+													<InfoIcon sx={{ mb: 0.5 }} />
+												)
+											}
+										>
+											<Link to={`${param}`}>{param}</Link>
+										</Button>
 									</li>
 								)
 							})}

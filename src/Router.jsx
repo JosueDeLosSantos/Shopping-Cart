@@ -11,6 +11,16 @@ const Router = () => {
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(true)
 
+	const [cart, setCart] = useState([])
+	const saveItem = (e) => {
+		const {id, dataset} = e.target.parentNode
+		// console.log(e.target.parentNode.dataset.quantity)
+		const newCart = cart
+		newCart.push({id: id, quantity: dataset.quantity })
+		setCart(newCart)
+		console.log(cart)
+	}
+
 	useEffect(() => {
 		const fetchItems = async () => {
 			try {
@@ -64,11 +74,11 @@ const Router = () => {
 				},
 				{
 					path: "Shop",
-					element: <Shop all={masterObj} loading={loading} error={error} />,
+					element: <Shop cart={cart} saveItem={saveItem} all={masterObj} loading={loading} error={error} />,
 				},
 				{
 					path: "Cart",
-					element: <Cart />,
+					element: <Cart all={masterObj} />,
 				},
 				{
 					path: "About",

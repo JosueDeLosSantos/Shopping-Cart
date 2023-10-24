@@ -25,29 +25,7 @@
 
 .mainNav > ul {
 	display: flex;
-	justify-content: space-between;
-	width: 50%;
+	justify-content: space-evenly;
+	width: 60%;
 	text-decoration: none;
-}
-
-a:visited {
-	color: inherit;
-}
-
-a:active {
-    text-shadow: 0px 0px 5px white;
-    animation: none;
-}
-
-a, li {
-    animation: none;
-}
-
-.underline {
-    text-decoration: underline;
-}
-
-.stickIt {
-	position: sticky !important;
-	top: 20 !important;
 }

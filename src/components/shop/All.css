@@ -13,3 +13,8 @@
 .itemCard {
     width: clamp(200px, 20vw, 400px) !important;
 }
+
+.hide {
+    opacity: 0 !important;
+    height: 0 !important;
+}

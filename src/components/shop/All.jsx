@@ -3,9 +3,14 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import PropTypes from "prop-types"
 import "./All.css"
 
-export default function All({ all, loading, error }) {
-    const categories = Object.keys(all)
-    
+export default function All({ all, loading, error, saveItem, cart }) {
+	const categories = Object.keys(all)
+
+	const hideButton = (e) => {
+		e.target.className += " hide "
+		console.log(e.target.parentNode)
+	}
+
 	if (error) {
 		return <h1>No data found</h1>
 	}
@@ -42,19 +47,30 @@ export default function All({ all, loading, error }) {
 													precision={el.rating.rate}
 													size="small"
 													readOnly
-                                                />
-                                                <span className="text-xs ml-1 text-slate-400">{`(${el.rating.count})`}</span>
+												/>
+												<span className="text-xs ml-1 text-slate-400">{`(${el.rating.count})`}</span>
 											</div>
-											<Button
-												className="addToCartBtn"
-												color="success"
-												variant="contained"
-												startIcon={
-													<ShoppingCartIcon className="addToCartIcon" />
-												}
-											>
-												ADD TO CART
-											</Button>
+											<div id={`${el.id}`} data-quantity="1">
+												{console.log(cart.find((v) => v.id == el.id))}
+												{cart.find((v) => v.id == el.id) ? (
+													<div>sample</div>
+												) : (
+													<Button
+														onClick={(e) => {
+															saveItem(e)
+															/* hideButton(e) */
+														}}
+														className="addToCartBtn"
+														color="success"
+														variant="contained"
+														startIcon={
+															<ShoppingCartIcon className="addToCartIcon" />
+														}
+													>
+														ADD TO CART
+													</Button>
+												)}
+											</div>
 										</Paper>
 									)
 								})}
@@ -71,4 +87,6 @@ All.propTypes = {
 	all: PropTypes.object,
 	loading: PropTypes.bool,
 	error: PropTypes.bool,
+	saveItem: PropTypes.func,
+	cart: PropTypes.array,
 }

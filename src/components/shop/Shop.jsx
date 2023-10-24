@@ -5,8 +5,8 @@ import Category from "./Category"
 import { Tab, Tabs, Box } from "@mui/material"
 
 const Shop = (props) => {
-	const { all, loading, error } = props
-	console.log(all["Men's clothing"])
+	const { all, loading, error, saveItem, cart } = props
+	console.log(all)
 
 	function CustomTabPanel(props) {
 		const { children, value, index, ...other } = props
@@ -51,7 +51,7 @@ const Shop = (props) => {
 						borderBottom: 1,
 						borderColor: "divider",
 						position: "sticky",
-						top: 70,
+						top: 55,
                         backgroundColor: "rgb(241 245 249)",
                         zIndex: 1,
 					}}
@@ -72,7 +72,7 @@ const Shop = (props) => {
 					</Tabs>
 				</Box>
 				<CustomTabPanel value={value} index={0}>
-					<All all={all} loading={loading} error={error} />
+					<All cart={cart} saveItem={saveItem} all={all} loading={loading} error={error} />
 				</CustomTabPanel>
 				<CustomTabPanel value={value} index={1}>
 					<Category
@@ -114,7 +114,9 @@ const Shop = (props) => {
 Shop.propTypes = {
 	all: PropTypes.object,
 	loading: PropTypes.bool,
-	error: PropTypes.bool,
+    error: PropTypes.bool,
+    saveItem: PropTypes.func,
+    cart: PropTypes.array,
 }
 
 export default Shop
