@@ -10,15 +10,31 @@ const Router = () => {
 	const [masterObj, setMasterObj] = useState({})
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(true)
+	const [quantity, setQuantity] = useState([])
 
 	const [cart, setCart] = useState([])
+
+
 	const saveItem = (e) => {
-		const {id, dataset} = e.target.parentNode
-		// console.log(e.target.parentNode.dataset.quantity)
+		const { id } = e.target.parentNode
 		const newCart = cart
-		newCart.push({id: id, quantity: dataset.quantity })
+		newCart.push(id)
 		setCart(newCart)
-		console.log(cart)
+	}
+
+	const changeQuantity = (e) => {
+		const { id, value } = e.target
+
+		console.log([id, value])
+
+		// e.target.dataset.quantity = value
+		/* const cartIndex = cart.findIndex((el) => el === id)
+		if (cartIndex !== -1) {
+			
+			setCart([...cart, (cart[cartIndex].quantity = value)])
+			e.target.dataset.quantity = value
+			console.log(e.target)
+		} */
 	}
 
 	useEffect(() => {
@@ -74,7 +90,17 @@ const Router = () => {
 				},
 				{
 					path: "Shop",
-					element: <Shop cart={cart} saveItem={saveItem} all={masterObj} loading={loading} error={error} />,
+					element: (
+						<Shop
+							quantity={quantity}
+							changeQuantity={changeQuantity}
+							cart={cart}
+							saveItem={saveItem}
+							all={masterObj}
+							loading={loading}
+							error={error}
+						/>
+					),
 				},
 				{
 					path: "Cart",

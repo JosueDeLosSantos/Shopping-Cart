@@ -2,15 +2,20 @@ import { Button, Paper, Rating } from "@mui/material"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import PropTypes from "prop-types"
 import "./All.css"
+import Quantity from "./Quantity"
 
-export default function All({ all, loading, error, saveItem, cart }) {
+export default function All(props) {
+	const { all, loading, error, saveItem, cart, changeQuantity, quantity } = props
 	const categories = Object.keys(all)
 
 	const hideButton = (e) => {
 		e.target.className += " hide "
-		console.log(e.target.parentNode)
-	}
+		const newArr = Array.from(e.target.parentNode.lastChild.classList).filter(
+			(el) => el !== "hide"
+		)
 
+		e.target.parentNode.lastChild.className = newArr.join(" ")
+	}
 	if (error) {
 		return <h1>No data found</h1>
 	}
@@ -50,25 +55,37 @@ export default function All({ all, loading, error, saveItem, cart }) {
 												/>
 												<span className="text-xs ml-1 text-slate-400">{`(${el.rating.count})`}</span>
 											</div>
-											<div id={`${el.id}`} data-quantity="1">
-												{console.log(cart.find((v) => v.id == el.id))}
-												{cart.find((v) => v.id == el.id) ? (
-													<div>sample</div>
+											<div id={`${el.id}`}>
+												{cart.find((v) => v == el.id) ? (
+													<Quantity
+														addedClass=""
+														quantity={quantity}
+														id={`${el.id}`}
+														changeQuantity={changeQuantity}
+													/>
 												) : (
-													<Button
-														onClick={(e) => {
-															saveItem(e)
-															/* hideButton(e) */
-														}}
-														className="addToCartBtn"
-														color="success"
-														variant="contained"
-														startIcon={
-															<ShoppingCartIcon className="addToCartIcon" />
-														}
-													>
-														ADD TO CART
-													</Button>
+													<>
+														<Button
+															onClick={(e) => {
+																saveItem(e)
+																hideButton(e)
+															}}
+															className="addToCartBtn"
+															color="success"
+															variant="contained"
+															startIcon={
+																<ShoppingCartIcon className="addToCartIcon" />
+															}
+														>
+															ADD TO CART
+														</Button>
+														<Quantity
+															addedClass="hide"
+															quantity={quantity}
+															id={`${el.id}`}
+															changeQuantity={changeQuantity}
+														/>
+													</>
 												)}
 											</div>
 										</Paper>
@@ -89,4 +106,6 @@ All.propTypes = {
 	error: PropTypes.bool,
 	saveItem: PropTypes.func,
 	cart: PropTypes.array,
+	changeQuantity: PropTypes.func,
+	quantity: PropTypes.array,
 }

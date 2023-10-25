@@ -4,6 +4,7 @@
     min-width: 110px !important;
     margin-top: 1rem !important;
     font-weight: 600 !important;
+    z-index: 1;
 }
 
 .addToCartIcon {
@@ -17,4 +18,12 @@
 .hide {
     opacity: 0 !important;
     height: 0 !important;
+    z-index: -1;
 }
+
+/* input[name="quantity"]:focus {
+    outline: none !important;
+}
+input[name="quantity"]:focus-visible {
+    outline: none !important;
+} */

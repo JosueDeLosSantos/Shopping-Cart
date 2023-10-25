@@ -5,8 +5,8 @@ import Category from "./Category"
 import { Tab, Tabs, Box } from "@mui/material"
 
 const Shop = (props) => {
-	const { all, loading, error, saveItem, cart } = props
-	console.log(all)
+	const { all, loading, error, saveItem, cart, changeQuantity, quantity } = props
+	// console.log(all)
 
 	function CustomTabPanel(props) {
 		const { children, value, index, ...other } = props
@@ -72,7 +72,7 @@ const Shop = (props) => {
 					</Tabs>
 				</Box>
 				<CustomTabPanel value={value} index={0}>
-					<All cart={cart} saveItem={saveItem} all={all} loading={loading} error={error} />
+					<All quantity={quantity} changeQuantity={changeQuantity} cart={cart} saveItem={saveItem} all={all} loading={loading} error={error} />
 				</CustomTabPanel>
 				<CustomTabPanel value={value} index={1}>
 					<Category
@@ -117,6 +117,8 @@ Shop.propTypes = {
     error: PropTypes.bool,
     saveItem: PropTypes.func,
     cart: PropTypes.array,
+    changeQuantity: PropTypes.func,
+    quantity: PropTypes.array,
 }
 
 export default Shop
