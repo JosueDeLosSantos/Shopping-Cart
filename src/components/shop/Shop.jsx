@@ -53,7 +53,7 @@ const Shop = (props) => {
 						position: "sticky",
 						top: 55,
                         backgroundColor: "rgb(241 245 249)",
-                        zIndex: 1,
+                        zIndex: 2,
 					}}
 				>
 					<Tabs
@@ -118,7 +118,7 @@ Shop.propTypes = {
     saveItem: PropTypes.func,
     cart: PropTypes.array,
     changeQuantity: PropTypes.func,
-    quantity: PropTypes.array,
+    quantity: PropTypes.object,
 }
 
 export default Shop

@@ -10,7 +10,7 @@ const Router = () => {
 	const [masterObj, setMasterObj] = useState({})
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(true)
-	const [quantity, setQuantity] = useState([])
+	const [quantity, setQuantity] = useState({})
 
 	const [cart, setCart] = useState([])
 
@@ -20,12 +20,19 @@ const Router = () => {
 		const newCart = cart
 		newCart.push(id)
 		setCart(newCart)
+		console.log(quantity)
 	}
 
 	const changeQuantity = (e) => {
 		const { id, value } = e.target
+		const newObject = quantity
+		newObject[id].quantity = value
+		setQuantity(newObject)
+		console.log(quantity)
+		
 
-		console.log([id, value])
+		/* setQuantity([...quantity, quantity[quantityIndex].quantity = value])
+		console.log(quantity) */
 
 		// e.target.dataset.quantity = value
 		/* const cartIndex = cart.findIndex((el) => el === id)
@@ -73,6 +80,11 @@ const Router = () => {
 			}
 		}
 		fetchItems()
+		let newObject = {}
+		for (let i = 1; i < 21; i++) {
+			newObject[i] = {id:`${i}`, quantity: ""}
+		}
+		setQuantity(newObject)
 	}, [])
 
 	const router = createBrowserRouter([

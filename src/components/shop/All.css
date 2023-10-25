@@ -18,7 +18,6 @@
 .hide {
     opacity: 0 !important;
     height: 0 !important;
-    z-index: -1;
 }
 
 /* input[name="quantity"]:focus {

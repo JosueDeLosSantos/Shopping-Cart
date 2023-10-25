@@ -59,7 +59,7 @@ export default function All(props) {
 												{cart.find((v) => v == el.id) ? (
 													<Quantity
 														addedClass=""
-														quantity={quantity}
+														quantity={quantity[el.id]}
 														id={`${el.id}`}
 														changeQuantity={changeQuantity}
 													/>
@@ -107,5 +107,5 @@ All.propTypes = {
 	saveItem: PropTypes.func,
 	cart: PropTypes.array,
 	changeQuantity: PropTypes.func,
-	quantity: PropTypes.array,
+	quantity: PropTypes.object,
 }
