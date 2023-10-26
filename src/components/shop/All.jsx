@@ -9,13 +9,32 @@ export default function All(props) {
 	const categories = Object.keys(all)
 
 	const hideButton = (e) => {
-		e.target.className += " hide "
-		const newArr = Array.from(e.target.parentNode.lastChild.classList).filter(
-			(el) => el !== "hide"
-		)
+		if (e.target.nodeName === "BUTTON") {
+			e.target.className += " hide "
+			const newArr = Array.from(e.target.parentNode.lastChild.classList).filter(
+				(el) => el !== "hide"
+			)
 
-		e.target.parentNode.lastChild.className = newArr.join(" ")
+			e.target.parentNode.lastChild.className = newArr.join(" ")
+		}
+		if (e.target.nodeName === "svg") {
+			e.target.parentNode.parentNode.className += " hide "
+			const newArr = Array.from(
+				e.target.parentNode.parentNode.parentNode.lastChild.classList
+			).filter((el) => el !== "hide")
+
+			e.target.parentNode.parentNode.parentNode.lastChild.className = newArr.join(" ")
+		}
+		if (e.target.nodeName === "path") {
+			e.target.parentNode.parentNode.parentNode.className += " hide "
+			const newArr = Array.from(
+				e.target.parentNode.parentNode.parentNode.parentNode.lastChild.classList
+			).filter((el) => el !== "hide")
+
+			e.target.parentNode.parentNode.parentNode.parentNode.lastChild.className = newArr.join(" ")
+		}
 	}
+
 	if (error) {
 		return <h1>No data found</h1>
 	}
@@ -74,7 +93,14 @@ export default function All(props) {
 															color="success"
 															variant="contained"
 															startIcon={
-																<ShoppingCartIcon className="addToCartIcon" />
+																<ShoppingCartIcon
+																	onClick={(e) => {
+                                                                        saveItem(e)
+                                                                        hideButton(e)
+																		//e.stopPropagation()
+																	}}
+																	className="addToCartIcon"
+																/>
 															}
 														>
 															ADD TO CART

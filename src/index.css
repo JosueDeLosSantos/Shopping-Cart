@@ -11,6 +11,23 @@
 	list-style-type: none;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+
+.hide {
+	opacity: 0 !important;
+	height: 0 !important;
+}
+
 .mainHeader {
 	background-color: black;
 	color: white;
@@ -29,3 +46,4 @@
 	width: 60%;
 	text-decoration: none;
 }
+

@@ -14,20 +14,68 @@ const Router = () => {
 	const [cart, setCart] = useState([])
 
 	const saveItem = (e) => {
-		const { id } = e.target.parentNode
-		const newCart = cart
-		newCart.push(id)
-		setCart(newCart)
-		//console.log(quantity)
+		if (e.target.nodeName === "BUTTON") {
+			// console.log(e.target.parentNode)
+			const { id } = e.target.parentNode
+			const newCart = cart
+			newCart.push(id)
+			setCart(newCart)
+		}
+		if (e.target.nodeName === "svg") {
+			// console.log(e.target.parentNode.parentNode.parentNode)
+			const { id } = e.target.parentNode.parentNode.parentNode
+			const newCart = cart
+			newCart.push(id)
+			setCart(newCart)
+		}
+		if (e.target.nodeName === "path") {
+			//console.log(e.target.parentNode.parentNode.parentNode.parentNode)
+			const { id } = e.target.parentNode.parentNode.parentNode.parentNode
+			const newCart = cart
+			newCart.push(id)
+			setCart(newCart)
+		}
 	}
 
 	const changeQuantity = (e) => {
-		let { id, value } = e.target
+		console.log(e.type)
+		if (e.type === "change") {
+			let { id, value } = e.target
 
-		const newObject = quantity
-		newObject[id].quantity = value
-		setQuantity(newObject)
-		//console.log(quantity)
+			const newObject = quantity
+			newObject[id].quantity = value
+			setQuantity(newObject)
+		} else if (e.type === "click") {
+			if (e.target.nodeName === "BUTTON") {
+				const addToCartBtn = e.target.parentNode.parentNode.childNodes[0]
+				const addToCartBtnNewClassName = Array.from(addToCartBtn.classList)
+					.filter((el) => el !== "hide")
+					.join(" ")
+				const editQuantitySection = e.target.parentNode
+				editQuantitySection.className += " hide "
+				addToCartBtn.className = addToCartBtnNewClassName
+			}
+			if (e.target.nodeName === "svg") {
+				const addToCartBtn =
+					e.target.parentNode.parentNode.parentNode.parentNode.childNodes[0]
+				const addToCartBtnNewClassName = Array.from(addToCartBtn.classList)
+					.filter((el) => el !== "hide")
+					.join(" ")
+				const editQuantitySection = e.target.parentNode.parentNode.parentNode
+				editQuantitySection.className += " hide "
+				addToCartBtn.className = addToCartBtnNewClassName
+			}
+			if (e.target.nodeName === "path") {
+				const addToCartBtn =
+					e.target.parentNode.parentNode.parentNode.parentNode.parentNode.childNodes[0]
+				const addToCartBtnNewClassName = Array.from(addToCartBtn.classList)
+					.filter((el) => el !== "hide")
+					.join(" ")
+				const editQuantitySection = e.target.parentNode.parentNode.parentNode.parentNode
+				editQuantitySection.className += " hide "
+				addToCartBtn.className = addToCartBtnNewClassName
+			}
+		}
 	}
 
 	useEffect(() => {
