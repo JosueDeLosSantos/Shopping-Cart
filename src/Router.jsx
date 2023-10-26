@@ -11,37 +11,23 @@ const Router = () => {
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(true)
 	const [quantity, setQuantity] = useState({})
-
 	const [cart, setCart] = useState([])
-
 
 	const saveItem = (e) => {
 		const { id } = e.target.parentNode
 		const newCart = cart
 		newCart.push(id)
 		setCart(newCart)
-		console.log(quantity)
+		//console.log(quantity)
 	}
 
 	const changeQuantity = (e) => {
-		const { id, value } = e.target
+		let { id, value } = e.target
+
 		const newObject = quantity
 		newObject[id].quantity = value
 		setQuantity(newObject)
-		console.log(quantity)
-		
-
-		/* setQuantity([...quantity, quantity[quantityIndex].quantity = value])
-		console.log(quantity) */
-
-		// e.target.dataset.quantity = value
-		/* const cartIndex = cart.findIndex((el) => el === id)
-		if (cartIndex !== -1) {
-			
-			setCart([...cart, (cart[cartIndex].quantity = value)])
-			e.target.dataset.quantity = value
-			console.log(e.target)
-		} */
+		//console.log(quantity)
 	}
 
 	useEffect(() => {
@@ -82,7 +68,7 @@ const Router = () => {
 		fetchItems()
 		let newObject = {}
 		for (let i = 1; i < 21; i++) {
-			newObject[i] = {id:`${i}`, quantity: ""}
+			newObject[i] = { id: `${i}`, quantity: "" }
 		}
 		setQuantity(newObject)
 	}, [])

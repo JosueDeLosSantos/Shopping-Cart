@@ -18,7 +18,7 @@ export default function Quantity(props) {
                     placeholder={quantity.quantity}
 					id={id}
 					onChange={changeQuantity}
-					className="w-[70%] pl-1 text-sm focus:outline-none border"
+					className="w-[70%] pl-1 text-sm focus:outline-none border placeholder:text-black placeholder:focus:text-transparent"
 					name="quantity"
 					type="number"
                     min="1"

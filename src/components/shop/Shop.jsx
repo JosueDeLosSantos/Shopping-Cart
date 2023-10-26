@@ -6,7 +6,6 @@ import { Tab, Tabs, Box } from "@mui/material"
 
 const Shop = (props) => {
 	const { all, loading, error, saveItem, cart, changeQuantity, quantity } = props
-	// console.log(all)
 
 	function CustomTabPanel(props) {
 		const { children, value, index, ...other } = props
