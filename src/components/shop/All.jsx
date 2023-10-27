@@ -31,7 +31,8 @@ export default function All(props) {
 				e.target.parentNode.parentNode.parentNode.parentNode.lastChild.classList
 			).filter((el) => el !== "hide")
 
-			e.target.parentNode.parentNode.parentNode.parentNode.lastChild.className = newArr.join(" ")
+			e.target.parentNode.parentNode.parentNode.parentNode.lastChild.className =
+				newArr.join(" ")
 		}
 	}
 
@@ -76,12 +77,35 @@ export default function All(props) {
 											</div>
 											<div id={`${el.id}`}>
 												{cart.find((v) => v == el.id) ? (
-													<Quantity
-														addedClass=""
-														quantity={quantity[el.id]}
-														id={`${el.id}`}
-														changeQuantity={changeQuantity}
-													/>
+													<>
+														<Button
+															onClick={(e) => {
+																saveItem(e)
+																hideButton(e)
+															}}
+															className="addToCartBtn hide"
+															color="success"
+															variant="contained"
+															startIcon={
+																<ShoppingCartIcon
+																	onClick={(e) => {
+																		saveItem(e)
+																		hideButton(e)
+																		//e.stopPropagation()
+																	}}
+																	className="addToCartIcon"
+																/>
+															}
+														>
+															ADD TO CART
+														</Button>
+														<Quantity
+															addedClass=""
+															quantity={quantity[el.id]}
+															id={`${el.id}`}
+															changeQuantity={changeQuantity}
+														/>
+													</>
 												) : (
 													<>
 														<Button
@@ -95,8 +119,8 @@ export default function All(props) {
 															startIcon={
 																<ShoppingCartIcon
 																	onClick={(e) => {
-                                                                        saveItem(e)
-                                                                        hideButton(e)
+																		saveItem(e)
+																		hideButton(e)
 																		//e.stopPropagation()
 																	}}
 																	className="addToCartIcon"

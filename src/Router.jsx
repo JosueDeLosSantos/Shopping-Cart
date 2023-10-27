@@ -14,39 +14,56 @@ const Router = () => {
 	const [cart, setCart] = useState([])
 
 	const saveItem = (e) => {
+		// Controls mouse click coordinates, this make sure MUI icons respond to mouse clicks correctly
 		if (e.target.nodeName === "BUTTON") {
-			// console.log(e.target.parentNode)
 			const { id } = e.target.parentNode
 			const newCart = cart
 			newCart.push(id)
 			setCart(newCart)
+			setQuantity({ ...quantity, [id]: { id: `${id}`, quantity: "1" } })
 		}
 		if (e.target.nodeName === "svg") {
-			// console.log(e.target.parentNode.parentNode.parentNode)
 			const { id } = e.target.parentNode.parentNode.parentNode
 			const newCart = cart
 			newCart.push(id)
 			setCart(newCart)
+			setQuantity({ ...quantity, [id]: { id: `${id}`, quantity: "1" } })
 		}
 		if (e.target.nodeName === "path") {
-			//console.log(e.target.parentNode.parentNode.parentNode.parentNode)
 			const { id } = e.target.parentNode.parentNode.parentNode.parentNode
 			const newCart = cart
 			newCart.push(id)
 			setCart(newCart)
+			setQuantity({ ...quantity, [id]: { id: `${id}`, quantity: "1" } })
 		}
 	}
+
+	function updater(id) {
+		// update cart
+		const newCart = cart.filter((el) => el !== id)
+		setCart(newCart)
+		//update quantity
+		const newQuantity = quantity
+		quantity[id].quantity = ""
+		setQuantity(newQuantity)
+	}
+
+	useEffect(() => {
+		console.log([quantity, cart])
+	})
 
 	const changeQuantity = (e) => {
 		console.log(e.type)
 		if (e.type === "change") {
 			let { id, value } = e.target
-
 			const newObject = quantity
 			newObject[id].quantity = value
 			setQuantity(newObject)
 		} else if (e.type === "click") {
+			// Controls mouse click coordinates, this make sure MUI icons respond to mouse clicks correctly
 			if (e.target.nodeName === "BUTTON") {
+				const { id } = e.target.parentNode.parentNode
+				updater(id)
 				const addToCartBtn = e.target.parentNode.parentNode.childNodes[0]
 				const addToCartBtnNewClassName = Array.from(addToCartBtn.classList)
 					.filter((el) => el !== "hide")
@@ -56,6 +73,8 @@ const Router = () => {
 				addToCartBtn.className = addToCartBtnNewClassName
 			}
 			if (e.target.nodeName === "svg") {
+				const { id } = e.target.parentNode.parentNode.parentNode.parentNode
+				updater(id)
 				const addToCartBtn =
 					e.target.parentNode.parentNode.parentNode.parentNode.childNodes[0]
 				const addToCartBtnNewClassName = Array.from(addToCartBtn.classList)
@@ -66,6 +85,8 @@ const Router = () => {
 				addToCartBtn.className = addToCartBtnNewClassName
 			}
 			if (e.target.nodeName === "path") {
+				const { id } = e.target.parentNode.parentNode.parentNode.parentNode.parentNode
+				updater(id)
 				const addToCartBtn =
 					e.target.parentNode.parentNode.parentNode.parentNode.parentNode.childNodes[0]
 				const addToCartBtnNewClassName = Array.from(addToCartBtn.classList)

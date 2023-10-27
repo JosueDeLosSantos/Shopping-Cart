@@ -59,7 +59,7 @@ export default function Category({ category, loading, error, categoryName }) {
 }
 
 Category.propTypes = {
-	category: PropTypes.object,
+	category: PropTypes.array,
 	categoryName: PropTypes.string,
 	loading: PropTypes.bool,
 	error: PropTypes.bool,
