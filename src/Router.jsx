@@ -49,7 +49,7 @@ const Router = () => {
 	}
 
 	useEffect(() => {
-		console.log([quantity, cart])
+		console.log([quantity, cart, masterObj])
 	})
 
 	const changeQuantity = (e) => {

@@ -3,38 +3,13 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import PropTypes from "prop-types"
 import "./All.css"
 import Quantity from "./Quantity"
+import hideButton from "./hideButton"
 
 export default function All(props) {
 	const { all, loading, error, saveItem, cart, changeQuantity, quantity } = props
 	const categories = Object.keys(all)
 
-	const hideButton = (e) => {
-		if (e.target.nodeName === "BUTTON") {
-			e.target.className += " hide "
-			const newArr = Array.from(e.target.parentNode.lastChild.classList).filter(
-				(el) => el !== "hide"
-			)
-
-			e.target.parentNode.lastChild.className = newArr.join(" ")
-		}
-		if (e.target.nodeName === "svg") {
-			e.target.parentNode.parentNode.className += " hide "
-			const newArr = Array.from(
-				e.target.parentNode.parentNode.parentNode.lastChild.classList
-			).filter((el) => el !== "hide")
-
-			e.target.parentNode.parentNode.parentNode.lastChild.className = newArr.join(" ")
-		}
-		if (e.target.nodeName === "path") {
-			e.target.parentNode.parentNode.parentNode.className += " hide "
-			const newArr = Array.from(
-				e.target.parentNode.parentNode.parentNode.parentNode.lastChild.classList
-			).filter((el) => el !== "hide")
-
-			e.target.parentNode.parentNode.parentNode.parentNode.lastChild.className =
-				newArr.join(" ")
-		}
-	}
+	
 
 	if (error) {
 		return <h1>No data found</h1>
@@ -121,7 +96,7 @@ export default function All(props) {
 																	onClick={(e) => {
 																		saveItem(e)
 																		hideButton(e)
-																		//e.stopPropagation()
+																		e.stopPropagation()
 																	}}
 																	className="addToCartIcon"
 																/>
