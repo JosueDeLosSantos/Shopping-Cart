@@ -44,7 +44,7 @@ const Router = () => {
 		setCart(newCart)
 		//update quantity
 		const newQuantity = quantity
-		quantity[id].quantity = ""
+		newQuantity[id].quantity = ""
 		setQuantity(newQuantity)
 	}
 
@@ -171,7 +171,9 @@ const Router = () => {
 				},
 				{
 					path: "Cart",
-					element: <Cart all={masterObj} />,
+					element: (
+						<Cart all={masterObj} quantity={quantity} changeQuantity={changeQuantity} />
+					),
 				},
 				{
 					path: "About",
