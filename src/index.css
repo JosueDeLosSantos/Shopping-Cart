@@ -11,6 +11,10 @@
 	list-style-type: none;
 }
 
+/* body {
+	background-color: #f1f5f9;
+} */
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: none;

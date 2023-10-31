@@ -69,7 +69,7 @@ export default function Category(props) {
 											</Button>
 											<Quantity
 												addedClass=""
-												quantity={quantity[el.id]}
+												quantity={quantity[el.id].quantity}
 												id={`${el.id}`}
 												changeQuantity={changeQuantity}
 											/>
@@ -99,7 +99,7 @@ export default function Category(props) {
 											</Button>
 											<Quantity
 												addedClass="hide"
-												quantity={quantity}
+												quantity={quantity[el.id].quantity}
 												id={`${el.id}`}
 												changeQuantity={changeQuantity}
 											/>

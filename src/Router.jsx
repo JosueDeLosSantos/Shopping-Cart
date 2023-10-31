@@ -176,6 +176,20 @@ const Router = () => {
 					),
 				},
 				{
+					path: "Cart/Shop",
+					element: (
+						<Shop
+							quantity={quantity}
+							changeQuantity={changeQuantity}
+							cart={cart}
+							saveItem={saveItem}
+							all={masterObj}
+							loading={loading}
+							error={error}
+						/>
+					),
+				},
+				{
 					path: "About",
 					element: <About />,
 				},

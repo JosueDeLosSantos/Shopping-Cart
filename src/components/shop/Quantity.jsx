@@ -27,7 +27,7 @@ export default function Quantity(props) {
 					Quantity:
 				</label>
 				<input
-					placeholder={quantity.quantity}
+					placeholder={quantity}
 					id={id}
 					onChange={(e) => {
 						changeQuantity(e)

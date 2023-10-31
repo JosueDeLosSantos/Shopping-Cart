@@ -1,0 +1,16 @@
+
+.cartMain {
+    padding: 2%;
+}
+
+.cartH1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 1%;
+}
+
+.itemsTopay {
+    display: flex;
+    gap: 50%;
+    margin-top: 5%;
+}

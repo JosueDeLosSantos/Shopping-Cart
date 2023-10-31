@@ -9,6 +9,7 @@ export default function All(props) {
 	const { all, loading, error, saveItem, cart, changeQuantity, quantity } = props
 	const categories = Object.keys(all)
 
+	console.log(quantity)
 	
 
 	if (error) {
@@ -76,7 +77,7 @@ export default function All(props) {
 														</Button>
 														<Quantity
 															addedClass=""
-															quantity={quantity[el.id]}
+															quantity={quantity[el.id].quantity}
 															id={`${el.id}`}
 															changeQuantity={changeQuantity}
 														/>
@@ -106,7 +107,7 @@ export default function All(props) {
 														</Button>
 														<Quantity
 															addedClass="hide"
-															quantity={quantity}
+															quantity={quantity[el.id].quantity}
 															id={`${el.id}`}
 															changeQuantity={changeQuantity}
 														/>

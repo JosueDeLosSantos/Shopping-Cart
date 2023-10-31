@@ -6,6 +6,9 @@ export default {
 		"./src/components/shop/All.jsx",
 		"./src/components/shop/Shop.jsx",
 		"./src/components/shop/Quantity.jsx",
+		"./src/components/shop/Category.jsx",
+		"./src/components/cart/Cart.jsx",
+		"./src/components/cart/Cart/Cartselection.jsx",
 	],
 	theme: {
 		extend: {},

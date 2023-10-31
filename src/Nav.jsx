@@ -79,7 +79,7 @@ const Nav = () => {
 	)
 
 	return (
-		<>
+		<main>
 			<header className="mainHeader sticky top-0">
 				<nav className="mainNav">
 					<div className="logo">All Shop</div>
@@ -88,7 +88,8 @@ const Nav = () => {
 							{params.map((param) => {
 								return (
 									<li onClick={onClick} key={param}>
-										<Button sx={{ color: "white", mr: 1}}
+										<Button
+											sx={{ color: "white", mr: 1 }}
 											startIcon={
 												param === "Home" ? (
 													<HomeIcon sx={{ mb: 0.5 }} />
@@ -121,7 +122,7 @@ const Nav = () => {
 				</nav>
 			</header>
 			<Outlet />
-		</>
+		</main>
 	)
 }
 
