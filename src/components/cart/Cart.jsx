@@ -6,7 +6,7 @@ import Cartselection from "./Cartselection"
 
 const Cart = (props) => {
 	const { all, quantity, changeQuantity } = props
-	const cart = []
+	const cart = {}
 
 	function itemFinder(id) {
 		const keys = Object.keys(all)
@@ -29,17 +29,21 @@ const Cart = (props) => {
 			const item = itemFinder(quantity[key].id)
 			const amount = quantity[key].quantity
 
-			cart.push({
+			cart[item.id] = {
 				item: item,
 				amount: Number(amount),
 				price: item.price,
 				total: item.price * Number(amount),
-			})
+			}
 		}
 	}
 
+	//console.log(cart)
+
+	const tempCart = Object.keys(cart)
+
 	return (
-		(cart.length < 1 && (
+		(tempCart.length < 1 && (
 			<main>
 				<Paper
 					sx={{ width: "80%", p: 5, ml: "auto", mr: "auto", mt: 10, textAlign: "center" }}
@@ -58,7 +62,7 @@ const Cart = (props) => {
 				</Paper>
 			</main>
 		)) ||
-		(cart.length > 0 && <Cartselection changeQuantity={changeQuantity} cart={cart} />)
+		(tempCart.length > 0 && <Cartselection changeQuantity={changeQuantity} cart={cart} />)
 	)
 }
 

@@ -68,6 +68,7 @@ export default function Category(props) {
 												ADD TO CART
 											</Button>
 											<Quantity
+												icon={true}
 												addedClass=""
 												quantity={quantity[el.id].quantity}
 												id={`${el.id}`}
@@ -97,7 +98,8 @@ export default function Category(props) {
 											>
 												ADD TO CART
 											</Button>
-											<Quantity
+												<Quantity
+												icon={true}
 												addedClass="hide"
 												quantity={quantity[el.id].quantity}
 												id={`${el.id}`}

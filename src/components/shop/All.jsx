@@ -9,8 +9,7 @@ export default function All(props) {
 	const { all, loading, error, saveItem, cart, changeQuantity, quantity } = props
 	const categories = Object.keys(all)
 
-	console.log(quantity)
-	
+	// console.log(quantity)
 
 	if (error) {
 		return <h1>No data found</h1>
@@ -41,6 +40,7 @@ export default function All(props) {
 											<p className="mb-[1vw] text-xs md:text-sm font-semibold">
 												{el.title}
 											</p>
+											<p className="text-xs text-slate-400">Price per unit</p>
 											<p className="text-base md:text-2xl font-bold">{`$ ${el.price}`}</p>
 											<div className="flex content-center">
 												<Rating
@@ -76,6 +76,7 @@ export default function All(props) {
 															ADD TO CART
 														</Button>
 														<Quantity
+															icon={true}
 															addedClass=""
 															quantity={quantity[el.id].quantity}
 															id={`${el.id}`}
@@ -106,6 +107,7 @@ export default function All(props) {
 															ADD TO CART
 														</Button>
 														<Quantity
+															icon={true}
 															addedClass="hide"
 															quantity={quantity[el.id].quantity}
 															id={`${el.id}`}

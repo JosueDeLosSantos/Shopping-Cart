@@ -48,12 +48,11 @@ const Router = () => {
 		setQuantity(newQuantity)
 	}
 
-	useEffect(() => {
+	/* useEffect(() => {
 		console.log([quantity, cart, masterObj])
-	})
+	}) */
 
 	const changeQuantity = (e) => {
-		console.log(e.type)
 		if (e.type === "change") {
 			let { id, value } = e.target
 			const newObject = quantity
