@@ -1,4 +1,4 @@
-import { Paper } from "@mui/material"
+import { Button, Paper } from "@mui/material"
 import Quantity from "../shop/Quantity"
 import PropTypes from "prop-types"
 import "./Cart.css"
@@ -35,16 +35,17 @@ function Cartselection({ cart, changeQuantity }) {
 		<main className="cartMain">
 			<h1 className="cartH1 px-4">Shopping cart</h1>
 
-			<div className="itemsTopay">
+			<Paper className="itemsTopay">
+				<Button sx={{fontWeight: 600, mb: "1rem"}} color="success" variant="contained">Checkout</Button>
 				<div className="flex gap-1">
-					<p className="font-bold px-4">Items:</p>
+					<p className="font-bold">Items:</p>
 					<span>{items}</span>
 				</div>
 				<div className="flex gap-1">
 					<p className="font-bold">Amount to pay:</p>
 					<span>{`$${parseFloat(total.toFixed(2))}`}</span>
 				</div>
-			</div>
+			</Paper>
 			<div className="flex flex-wrap justify-center max-w-[950px] my-[5vw]">
 				{tempCart.map((el) => {
 					return (
@@ -60,6 +61,7 @@ function Cartselection({ cart, changeQuantity }) {
 							<p className="mb-[1vw] text-xs md:text-sm font-semibold">
 								{el.item.title}
 							</p>
+							<p className="text-xs text-slate-400">Total price</p>
 
 							<div id={`${el.item.id}`}>
 								<Quantity

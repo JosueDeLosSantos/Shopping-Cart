@@ -33,6 +33,7 @@ export default function Category(props) {
 								<p className="mb-[1vw] text-xs md:text-sm font-semibold">
 									{el.title}
 								</p>
+								<p className="text-xs text-slate-400">Price per unit</p>
 								<p className="text-base md:text-2xl font-bold">{`$ ${el.price}`}</p>
 								<div className="flex content-center">
 									<Rating
