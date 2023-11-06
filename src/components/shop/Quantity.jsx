@@ -5,9 +5,15 @@ import "./All.css"
 import { useState } from "react"
 
 export default function Quantity(props) {
-	const { id, changeQuantity, addedClass, quantity, icon, price, amount, updateNewCart } = props
+	let { id, changeQuantity, addedClass, quantity, icon, price, amount, updateNewCart } = props
 	const [total, useTotal] = useState(amount)
 	const [alert, setAlert] = useState("")
+
+	if (updateNewCart === undefined) {
+		updateNewCart = () => {
+			return null
+		}
+	}
 
 	function alertTriger(e) {
 		const regex = /^\d+$/

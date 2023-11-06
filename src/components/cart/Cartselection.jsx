@@ -16,7 +16,6 @@ function Cartselection({ cart, changeQuantity }) {
 	})
 
 	function updateNewCart(e) {
-		console.log(e.type)
 		if (e.type === "change") {
 			const { id, value } = e.target
 			const tempItem = newCart[id]

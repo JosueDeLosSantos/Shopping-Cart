@@ -144,7 +144,7 @@ const Router = () => {
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <Nav />,
+			element: <Nav cart={cart} />,
 			children: [
 				{
 					index: true,
