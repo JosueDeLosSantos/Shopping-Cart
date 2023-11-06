@@ -34,15 +34,19 @@ function Cartselection({ cart, changeQuantity }) {
 		<main className="cartMain">
 			<h1 className="cartH1 px-4">Shopping cart</h1>
 
-			<Paper className="itemsTopay">
-				<Button sx={{fontWeight: 600, mb: "1rem"}} color="success" variant="contained">Checkout</Button>
-				<div className="flex gap-1">
-					<p className="font-bold">Items:</p>
-					<span>{items}</span>
-				</div>
-				<div className="flex gap-1">
-					<p className="font-bold">Amount to pay:</p>
-					<span>{`$${parseFloat(total.toFixed(2))}`}</span>
+			<Paper className="itemsTopay flex flex-col">
+				<Button onClick={() => {location.reload()}} sx={{ fontWeight: 600, mb: "1rem" }} color="success" variant="contained">
+					Checkout
+				</Button>
+				<div>
+					<div className="flex gap-1 ">
+						<p className="font-bold checkoutBillText">Items:</p>
+						<span className="checkoutBillText">{items}</span>
+					</div>
+					<div className="flex gap-1 ">
+						<p className="font-bold checkoutBillText">Amount to pay:</p>
+						<span className="checkoutBillText">{`$${parseFloat(total.toFixed(2))}`}</span>
+					</div>
 				</div>
 			</Paper>
 			<div className="flex flex-wrap justify-center max-w-[950px] my-[5vw]">

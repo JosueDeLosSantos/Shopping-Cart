@@ -51,7 +51,7 @@ const Cart = (props) => {
 					<h1 className="text-lg md:text-2xl">
 						Your cart is empty! Click below to start shopping.
 					</h1>
-					<Link to="Shop">
+					<Link to="/Shop">
 						<Button
 							sx={{ mt: 5, fontWeight: 600, fontSize: "0.8rem" }}
 							variant="contained"

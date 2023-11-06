@@ -20,11 +20,13 @@ import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"
 import InfoIcon from "@mui/icons-material/Info"
 import PropTypes from "prop-types"
 
-const Nav = ({ cart }) => {
+const Nav = ({ cart, cartUpdater }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [amount, setAmount] = useState(cart.length)
 	const isSmallScreen = useMediaQuery({ query: "(max-width: 600px)" })
 	const isBigScreen = useMediaQuery({ query: "(min-width: 601px)" })
+
+	console.log(cart)
 
 	/* function onClick(e) {
 		const children = e.target.parentNode.parentNode.children
@@ -94,7 +96,10 @@ const Nav = ({ cart }) => {
 				{params.map((text) => (
 					<ListItem key={text} disablePadding>
 						{text === "Cart" ? (
-							<Link data-cart onClick={pageSelection} to={`${text}`}>
+							<Link data-cart onClick={(e) => {
+								pageSelection(e)
+								cartUpdater()
+							}} to={`${text}`}>
 								<ListItemButton data-cart>
 									<ListItemIcon data-cart>
 										<Badge data-cart badgeContent={amount} color="primary">
@@ -105,7 +110,10 @@ const Nav = ({ cart }) => {
 								</ListItemButton>
 							</Link>
 						) : (
-							<Link onClick={pageSelection} to={`${text}`}>
+							<Link onClick={(e) => {
+								pageSelection(e)
+								cartUpdater()
+							}} to={`${text}`}>
 								<ListItemButton>
 									<ListItemIcon>
 										{text === "Home" ? (
@@ -131,14 +139,17 @@ const Nav = ({ cart }) => {
 		<main>
 			<header className="mainHeader sticky top-0">
 				<nav className="mainNav">
-					<div className="logo">All Shop</div>
+					<div className="logoFont text-xl">All Shop</div>
 					{isBigScreen && (
 						<ul>
 							{params.map((param) => {
 								return (
 									<li key={param}>
 										{param === "Cart" ? (
-											<Link data-cart onClick={pageSelection} to={`${param}`}>
+											<Link data-cart onClick={(e) => {
+												pageSelection(e)
+												cartUpdater()
+											}} to={`${param}`}>
 												<Button
 													data-cart
 													sx={{ color: "white", mr: 1 }}
@@ -159,7 +170,10 @@ const Nav = ({ cart }) => {
 												</Button>
 											</Link>
 										) : (
-											<Link onClick={pageSelection} to={`${param}`}>
+											<Link onClick={(e) => {
+												pageSelection(e)
+												cartUpdater()
+											}} to={`${param}`}>
 												<Button
 													sx={{ color: "white", mr: 1 }}
 													startIcon={
@@ -204,4 +218,5 @@ export default Nav
 
 Nav.propTypes = {
 	cart: PropTypes.array,
+	cartUpdater: PropTypes.func,
 }

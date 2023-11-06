@@ -8,7 +8,8 @@ export default {
 		"./src/components/shop/Quantity.jsx",
 		"./src/components/shop/Category.jsx",
 		"./src/components/cart/Cart.jsx",
-		"./src/components/cart/Cart/Cartselection.jsx",
+		"./src/components/cart/Cartselection.jsx",
+		"./src/components/home/Home.jsx"
 	],
 	theme: {
 		extend: {},

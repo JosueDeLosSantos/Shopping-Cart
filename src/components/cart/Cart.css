@@ -19,6 +19,10 @@
     padding: 1rem;
 }
 
+.checkoutBillText {
+    font-size: clamp(1.1rem,calc(1rem + 1vw),1.4rem);
+}
+
 @media (max-width: 600px) {
     .itemsTopay{
         flex-direction: column;

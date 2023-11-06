@@ -48,9 +48,19 @@ const Router = () => {
 		setQuantity(newQuantity)
 	}
 
-	/* useEffect(() => {
+	function cartUpdater() {
+		const newCart = cart
+		cart.forEach((element, i) => {
+			if (quantity[element].quantity === "") {
+				newCart.splice(i, 1)
+			}
+		})
+		setCart(newCart)
+	}
+
+	useEffect(() => {
 		console.log([quantity, cart, masterObj])
-	}) */
+	})
 
 	const changeQuantity = (e) => {
 		if (e.type === "change") {
@@ -144,7 +154,7 @@ const Router = () => {
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <Nav cart={cart} />,
+			element: <Nav cartUpdater={cartUpdater} cart={cart} />,
 			children: [
 				{
 					index: true,
@@ -172,20 +182,6 @@ const Router = () => {
 					path: "Cart",
 					element: (
 						<Cart all={masterObj} quantity={quantity} changeQuantity={changeQuantity} />
-					),
-				},
-				{
-					path: "Cart/Shop",
-					element: (
-						<Shop
-							quantity={quantity}
-							changeQuantity={changeQuantity}
-							cart={cart}
-							saveItem={saveItem}
-							all={masterObj}
-							loading={loading}
-							error={error}
-						/>
 					),
 				},
 				{
