@@ -9,7 +9,8 @@ export default {
 		"./src/components/shop/Category.jsx",
 		"./src/components/cart/Cart.jsx",
 		"./src/components/cart/Cartselection.jsx",
-		"./src/components/home/Home.jsx"
+		"./src/components/home/Home.jsx",
+		"./src/components/about/About.jsx",
 	],
 	theme: {
 		extend: {},
