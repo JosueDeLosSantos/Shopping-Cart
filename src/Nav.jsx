@@ -184,7 +184,9 @@ const Nav = ({ cart }) => {
 					{isSmallScreen && (
 						<>
 							<IconButton onClick={toggleDrawer(true)} aria-label="menu">
-								<MenuOpenIcon sx={{ color: "white" }} />
+								<Badge data-cart badgeContent={amount} color="primary">
+									<MenuOpenIcon sx={{ color: "white" }} />
+								</Badge>
 							</IconButton>
 							<Drawer anchor={"right"} open={isOpen} onClose={toggleDrawer(false)}>
 								{list()}
