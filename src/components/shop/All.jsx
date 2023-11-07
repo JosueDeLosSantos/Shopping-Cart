@@ -9,8 +9,6 @@ export default function All(props) {
 	const { all, loading, error, saveItem, cart, changeQuantity, quantity } = props
 	const categories = Object.keys(all)
 
-	// console.log(quantity)
-
 	if (error) {
 		return <h1>No data found</h1>
 	}

@@ -40,6 +40,7 @@ const Router = () => {
 
 	function updater(id) {
 		// update cart
+		// remove selected element from cart
 		const newCart = cart.filter((el) => el !== id)
 		setCart(newCart)
 		//update quantity
@@ -49,6 +50,7 @@ const Router = () => {
 	}
 
 	function cartUpdater() {
+		// removes element from cart if it has no quantity applied
 		const newCart = cart
 		cart.forEach((element, i) => {
 			if (quantity[element].quantity === "") {
@@ -58,9 +60,18 @@ const Router = () => {
 		setCart(newCart)
 	}
 
-	useEffect(() => {
-		console.log([quantity, cart, masterObj])
-	})
+	function clearAll() {
+		// Clear all quantities
+		const newQuantity = quantity
+		for (let key in newQuantity) {
+			if (newQuantity[key].quantity !== "") {
+				newQuantity[key].quantity = ""
+			}
+		}
+		setQuantity(newQuantity)
+		// Clear cart
+		setCart([])
+	}
 
 	const changeQuantity = (e) => {
 		if (e.type === "change") {
@@ -181,7 +192,12 @@ const Router = () => {
 				{
 					path: "Cart",
 					element: (
-						<Cart all={masterObj} quantity={quantity} changeQuantity={changeQuantity} />
+						<Cart
+							clearAll={clearAll}
+							all={masterObj}
+							quantity={quantity}
+							changeQuantity={changeQuantity}
+						/>
 					),
 				},
 				{

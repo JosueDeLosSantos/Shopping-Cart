@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import "./Cart.css"
 import { useState } from "react"
 
-function Cartselection({ cart, changeQuantity }) {
+function Cartselection({ cart, changeQuantity, clearAll }) {
 	const [newCart, setNewCart] = useState(cart)
 	const tempCart = Object.values(newCart)
 	let items = 0
@@ -35,7 +35,7 @@ function Cartselection({ cart, changeQuantity }) {
 			<h1 className="cartH1 px-4">Shopping cart</h1>
 
 			<Paper className="itemsTopay flex flex-col">
-				<Button onClick={() => {location.reload()}} sx={{ fontWeight: 600, mb: "1rem" }} color="success" variant="contained">
+				<Button onClick={clearAll} sx={{ fontWeight: 600, mb: "1rem" }} color="success" variant="contained">
 					Checkout
 				</Button>
 				<div>
@@ -89,6 +89,7 @@ function Cartselection({ cart, changeQuantity }) {
 Cartselection.propTypes = {
 	cart: PropTypes.object,
 	changeQuantity: PropTypes.func,
+	clearAll: PropTypes.func,
 }
 
 export default Cartselection

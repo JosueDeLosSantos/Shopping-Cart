@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link, Outlet } from "react-router-dom"
+import { NavLink, Outlet } from "react-router-dom"
 import { useMediaQuery } from "react-responsive"
 import {
 	Box,
@@ -26,21 +26,6 @@ const Nav = ({ cart, cartUpdater }) => {
 	const isSmallScreen = useMediaQuery({ query: "(max-width: 600px)" })
 	const isBigScreen = useMediaQuery({ query: "(min-width: 601px)" })
 
-	console.log(cart)
-
-	/* function onClick(e) {
-		const children = e.target.parentNode.parentNode.children
-		if (children.length >= 4) {
-			for (let i = 0; i <= 3; i++) {
-				if (children[i] === e.target.parentNode) {
-					children[i].classList.value = "underline"
-				} else {
-					children[i].classList.value = ""
-				}
-			}
-		}
-	} */
-
 	const toggleDrawer = (open) => (event) => {
 		if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
 			return
@@ -55,34 +40,12 @@ const Nav = ({ cart, cartUpdater }) => {
 		setAmount(cart.length)
 	}, [cart.length])
 
-	//A, SPAN, svg, path
-
 	function pageSelection(e) {
 		if (e.target.parentNode.dataset.cart) {
 			setAmount(0)
 		} else {
 			setAmount(cart.length)
 		}
-		/* const regex = /CART/
-		if (e.target.tagName === "BUTTON") {
-			if (regex.test(e.target.parentNode.innerText)) {
-				setAmount(0)
-			} else {
-				setAmount(cart.length)
-			}
-		} else if (e.target.tagName === "svg") {
-			if (regex.test(e.target.parentNode.parentNode.parentNode.innerText)) {
-				setAmount(0)
-			} else {
-				setAmount(cart.length)
-			}
-		} else if (e.target.tagName === "path") {
-			if (regex.test(e.target.parentNode.parentNode.parentNode.parentNode.innerText)) {
-				setAmount(0)
-			} else {
-				setAmount(cart.length)
-			}
-		} */
 	}
 
 	const list = () => (
@@ -96,10 +59,14 @@ const Nav = ({ cart, cartUpdater }) => {
 				{params.map((text) => (
 					<ListItem key={text} disablePadding>
 						{text === "Cart" ? (
-							<Link data-cart onClick={(e) => {
-								pageSelection(e)
-								cartUpdater()
-							}} to={`${text}`}>
+							<NavLink
+								data-cart
+								onClick={(e) => {
+									pageSelection(e)
+									cartUpdater()
+								}}
+								to={`${text}`}
+							>
 								<ListItemButton data-cart>
 									<ListItemIcon data-cart>
 										<Badge data-cart badgeContent={amount} color="primary">
@@ -108,12 +75,15 @@ const Nav = ({ cart, cartUpdater }) => {
 									</ListItemIcon>
 									<ListItemText data-cart primary={text} />
 								</ListItemButton>
-							</Link>
+							</NavLink>
 						) : (
-							<Link onClick={(e) => {
-								pageSelection(e)
-								cartUpdater()
-							}} to={`${text}`}>
+							<NavLink
+								onClick={(e) => {
+									pageSelection(e)
+									cartUpdater()
+								}}
+								to={`${text}`}
+							>
 								<ListItemButton>
 									<ListItemIcon>
 										{text === "Home" ? (
@@ -127,7 +97,7 @@ const Nav = ({ cart, cartUpdater }) => {
 
 									<ListItemText primary={text} />
 								</ListItemButton>
-							</Link>
+							</NavLink>
 						)}
 					</ListItem>
 				))}
@@ -146,10 +116,14 @@ const Nav = ({ cart, cartUpdater }) => {
 								return (
 									<li key={param}>
 										{param === "Cart" ? (
-											<Link data-cart onClick={(e) => {
-												pageSelection(e)
-												cartUpdater()
-											}} to={`${param}`}>
+											<NavLink
+												data-cart
+												onClick={(e) => {
+													pageSelection(e)
+													cartUpdater()
+												}}
+												to={`${param}`}
+											>
 												<Button
 													data-cart
 													sx={{ color: "white", mr: 1 }}
@@ -168,12 +142,15 @@ const Nav = ({ cart, cartUpdater }) => {
 												>
 													{param}
 												</Button>
-											</Link>
+											</NavLink>
 										) : (
-											<Link onClick={(e) => {
-												pageSelection(e)
-												cartUpdater()
-											}} to={`${param}`}>
+											<NavLink
+												onClick={(e) => {
+													pageSelection(e)
+													cartUpdater()
+												}}
+												to={`${param}`}
+											>
 												<Button
 													sx={{ color: "white", mr: 1 }}
 													startIcon={
@@ -188,7 +165,7 @@ const Nav = ({ cart, cartUpdater }) => {
 												>
 													{param}
 												</Button>
-											</Link>
+											</NavLink>
 										)}
 									</li>
 								)

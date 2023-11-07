@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 import Cartselection from "./Cartselection"
 
 const Cart = (props) => {
-	const { all, quantity, changeQuantity } = props
+	const { all, quantity, changeQuantity, clearAll } = props
 	const cart = {}
 
 	function itemFinder(id) {
@@ -14,7 +14,6 @@ const Cart = (props) => {
 		keys.forEach((key) => {
 			all[key].forEach((el) => {
 				if (`${el.id}` === id) {
-					// console.log(el)
 					answer = el
 				}
 			})
@@ -25,7 +24,6 @@ const Cart = (props) => {
 	const regex = /^\d+$/
 	for (let key in quantity) {
 		if (regex.test(quantity[key].quantity)) {
-			//console.log(quantity[key].id)
 			const item = itemFinder(quantity[key].id)
 			const amount = quantity[key].quantity
 
@@ -37,8 +35,6 @@ const Cart = (props) => {
 			}
 		}
 	}
-
-	//console.log(cart)
 
 	const tempCart = Object.keys(cart)
 
@@ -62,7 +58,7 @@ const Cart = (props) => {
 				</Paper>
 			</main>
 		)) ||
-		(tempCart.length > 0 && <Cartselection changeQuantity={changeQuantity} cart={cart} />)
+		(tempCart.length > 0 && <Cartselection clearAll={clearAll} changeQuantity={changeQuantity} cart={cart} />)
 	)
 }
 
@@ -72,4 +68,5 @@ Cart.propTypes = {
 	all: PropTypes.object,
 	changeQuantity: PropTypes.func,
 	quantity: PropTypes.object,
+	clearAll: PropTypes.func,
 }

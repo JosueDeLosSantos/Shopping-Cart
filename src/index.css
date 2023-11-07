@@ -20,6 +20,12 @@
 	font-family: playball;
 }
 
+.active > button, .active > div {
+	text-decoration: underline !important;
+	text-decoration-thickness: 0.1rem !important;
+	text-underline-offset: 0.4rem !important;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: none;

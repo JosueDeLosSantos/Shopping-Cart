@@ -60,7 +60,6 @@ export default function Category(props) {
 														onClick={(e) => {
 															saveItem(e)
 															hideButton(e)
-															//e.stopPropagation()
 														}}
 														className="addToCartIcon"
 													/>
@@ -99,7 +98,7 @@ export default function Category(props) {
 											>
 												ADD TO CART
 											</Button>
-												<Quantity
+											<Quantity
 												icon={true}
 												addedClass="hide"
 												quantity={quantity[el.id].quantity}
