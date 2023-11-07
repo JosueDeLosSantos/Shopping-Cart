@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { NavLink, Outlet } from "react-router-dom"
+import { NavLink, Outlet, Link } from "react-router-dom"
 import { useMediaQuery } from "react-responsive"
 import {
 	Box,
@@ -109,7 +109,10 @@ const Nav = ({ cart, cartUpdater }) => {
 		<main>
 			<header className="mainHeader sticky top-0">
 				<nav className="mainNav">
-					<div className="logoFont text-xl">All Shop</div>
+					<Link to="/Home">
+						<div className="logoFont text-xl">All Shop</div>
+					</Link>
+
 					{isBigScreen && (
 						<ul>
 							{params.map((param) => {
